@@ -1,0 +1,9 @@
+Each JavaFX Node (subclass) instance can only be added to the JavaFX scene graph once. In other words, each Node instance can only appear in one place in the scene graph. If you try to add the same Node instance, or Node subclass instance, to the scene graph more than once, JavaFX will throw an exception!
+
+A JavaFX Node can sometimes have subitems - which are also called children. Whether a given Node instance can have children or not depends on the concrete Node subclass. A special subclass of JavaFX Node named Parent is used to model Node instance which can have children. Thus, Node instances that can have children are typically children of the Parent class - and not the Node class directly.
+
+The JavaFX Stage and JavaFX Scene classes are not subclasses of the JavaFX Node class. While these two classes are used to display the JavaFX scene graph, only Node instances added to a JavaFX Scene instance are considered part of the JavaFX Scene graph.
+
+Once a Node instance is attached to the scene graph, only the JavaFX Application Thread, the thread managing the JavaFX scene graph, is allowed to modify the Node instance.
+
+--> Pas sûr d'avoir immédiatement besoin de Nodes ni de leur intérêt dans l'application en question...
