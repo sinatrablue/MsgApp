@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="msgapp.Main" spacing="20">
+    <Label fx:id="label1" text="Choice Menu"/>
+    <Button fx:id="button_server" text="Server" onAction="#reactToClickServer"/>
+    <Button fx:id="button_client" text="Client" onAction="#reactToClickClient"/>
+</VBox>
+-->
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="msgapp.Main" alignment="center" hgap="10" vgap="10">
+    <padding>
+        <Insets top="25" right="25" bottom="10" left="25"/>
+    </padding>
+</GridPane>
+
+<Text text="Choose your role :" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+
+<HBox spacing="10" alignment="center" GridPane.columnIndex="1" GridPane.rowIndex="2">
+    <Button fx:id="button_server" text="Server" onAction="#reactToClickServer"/>
+    <Button fx:id="button_client" text="Client" onAction="#reactToClickClient"/>
+</HBox>

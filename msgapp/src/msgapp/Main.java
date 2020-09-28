@@ -13,33 +13,61 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;  // 2
 import javafx.stage.StageStyle;
 import javafx.event.Event;
+import javafx.scene.text.*;
 
 import java.net.URL;
 
 public class Main extends Application { // 1
 
     @FXML
-    public void reactToClickServer(Event s) {
-        System.out.println("You chose Server");
+    public Text button_pressed;
+    public void openChoiceMenu(Event o) {
+        System.out.println("Asking for the choice menu.");
+        button_pressed.setText("Choice menu asked");
+        // Opening the choice menu
+
     }
+
     @FXML
+    public Text S_button_pressed;
+    public void reactToClickServer(Event s) {
+        System.out.println("Server chosen");
+        S_button_pressed.setText("You chose Server.");
+        // Opening the Server Window
+
+    }
+
+    @FXML
+    public Text C_button_pressed;
     public void reactToClickClient(Event c) {
-        System.out.println("You chose Client");
+        System.out.println("Client chosen");
+        C_button_pressed.setText("You chose Client.");
+        // Opening the Client Window
+        
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {    // 2
         //  ---------------------------------------------------------------
-        //  First window, principal    -----------------------------------
-        primaryStage.setTitle("Messaging with JavaFX");
+        //  First window, principal    ------------------------------------
+        FXMLLoader prm_loader = new FXMLLoader();
+        prm_loader.setLocation(new URL("file:/Users/sinatrablue/Documents/MsgApp/msgapp/src/msgapp/welcome.fxml"));
+        VBox prm_box = prm_loader.<VBox>load();
+        Scene prm_scene = new Scene(prm_box, 300, 300);
+        Stage prm_stage = new Stage();
+        prm_stage.setScene(prm_scene);
+        primaryStage.setTitle("Welcome page");
 
+        /*  NO LONGER USEFULL, ALL IN FXML
         // 4 -> adding a scene
         Label label = new Label("Future interface");
         Scene scene = new Scene(label, 400, 200);
         primaryStage.setScene(scene);
+        */
         //  End Window 1    -----------------------------------------------
         //  ---------------------------------------------------------------
 
+        /*  NOT USED FOR NOW
         //  ---------------------------------------------------------------
         //  Second window, tests        -----------------------------------
         VBox vBox_1 = new VBox(new Label("--- vBox 1 ---"));
@@ -58,21 +86,23 @@ public class Main extends Application { // 1
         stage_1.initModality(Modality.NONE);  // Blocks nothins
         stage_1.initOwner(primaryStage);    // stage_1 depends on primaryStage
         stage_1.initStyle(StageStyle.DECORATED);
+        */
         //  End Window 2    ----------------------------------------------
         //  --------------------------------------------------------------
 
+
         //  ---------------------------------------------------------------
         //  Test Loading from FXML
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(new URL("file:/Users/sinatrablue/Documents/HelloFX/IDE/Eclipse/Non-Modular/Java/hellofx/src/hellofx/hellofx.fxml"));
-
-        VBox vBox_2 = loader.<VBox>load();
-        Scene scene_2 = new Scene(vBox_2, 300, 300);
+        FXMLLoader st2_loader = new FXMLLoader();
+        st2_loader.setLocation(new URL("file:/Users/sinatrablue/Documents/MsgApp/msgapp/src/msgapp/choice_menu.fxml"));
+        VBox vBox_2 = st2_loader.<VBox>load();
+        Scene scene_2 = new Scene(vBox_2, 500, 500);
         Stage stage_2 = new Stage();
         stage_2.setScene(scene_2);
         stage_2.setTitle("Choice menu Window");
 
-        primaryStage.show();    // show() vs showAndWait(
+        primaryStage.show();    // show vs showAndWait
+        System.out.println("Welcome page opened.");
         //stage_1.showAndWait();
         stage_2.showAndWait();
     }
